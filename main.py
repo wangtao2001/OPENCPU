@@ -129,7 +129,6 @@ def login(username, password):
     if '登录成功' in response.text:
         cookies.update(dict(response.cookies))
         return cookies
-    raise Exception('登录失败')
 
 
 if __name__ == '__main__':
@@ -139,6 +138,6 @@ if __name__ == '__main__':
         {"role": "user", "content": "你是谁"}
     ]
     cookies = login('', '')
-    code = get_code(cookies)  # cookies 可以存起来, 不需要每次都重新获取
-    token = get_token(code)  # token 可以存起来, 不需要每次都重新获取
+    code = get_code(cookies)
+    token = get_token(code)  # cookies、code、token 可以存起来, 不需要每次都重新获取
     chat(model, data, token)
